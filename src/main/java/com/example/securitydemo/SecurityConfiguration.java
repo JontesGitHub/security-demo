@@ -30,11 +30,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .antMatchers("/admin").hasRole("ADMIN")
                 .antMatchers("/user").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/").permitAll()
-                .and().formLogin().loginPage("/login")
+                .and().formLogin()
                 .and().rememberMe()
-                .and().logout().logoutUrl("/logout")
+                .and().logout()
                 .invalidateHttpSession(true)
-                .deleteCookies("JSESSIONID");
+                .deleteCookies("JSESSIONID","remember-me");
     }
 
     @Bean
